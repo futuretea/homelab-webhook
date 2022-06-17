@@ -54,16 +54,7 @@ type Monitor struct {
 	MqttSuccessMessage  string          `json:"mqttSuccessMessage"`
 }
 
-func uptimeKumaToServerchan(notify *UptimeKumaNotify) error {
-	title := fmt.Sprintf("[%s]", notify.Monitor.Name)
-	description := fmt.Sprintf(`
-type: %s
-hostname: %s
-name: %s
-msg:%s`, notify.Monitor.Type, notify.Monitor.Hostname, notify.Monitor.Name, notify.Msg)
-	log.Debug().Str("title", title).Msg(notify.Msg)
-	return sendToServerChan(title, description)
-}
+const uptimeKumaServerChanPath = "/uptime-kuma-serverchan"
 
 func uptimeKumaServerChanHandler(c *gin.Context) {
 	var notify UptimeKumaNotify
@@ -76,4 +67,15 @@ func uptimeKumaServerChanHandler(c *gin.Context) {
 	}
 	c.String(http.StatusOK, "")
 	return
+}
+
+func uptimeKumaToServerchan(notify *UptimeKumaNotify) error {
+	title := fmt.Sprintf("[%s]", notify.Monitor.Name)
+	description := fmt.Sprintf(`
+type: %s
+hostname: %s
+name: %s
+msg:%s`, notify.Monitor.Type, notify.Monitor.Hostname, notify.Monitor.Name, notify.Msg)
+	log.Debug().Str("title", title).Msg(notify.Msg)
+	return sendToServerChan(title, description)
 }

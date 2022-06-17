@@ -12,7 +12,7 @@ func init() {
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
-	r.POST("/uptime-kuma-serverchan", uptimeKumaServerChanHandler)
+	r.POST(uptimeKumaServerChanPath, uptimeKumaServerChanHandler)
 	if err := r.Run(); err != nil {
 		panic(err)
 	}
