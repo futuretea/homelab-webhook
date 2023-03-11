@@ -1,4 +1,4 @@
-module github.com/futuretea/uptime-kuma-serverchan
+module github.com/futuretea/homelab-webhook
 
 go 1.18
 

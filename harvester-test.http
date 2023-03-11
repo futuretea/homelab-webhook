@@ -1,0 +1,10 @@
+POST http://localhost:8080/harvester-serverchan/SUCCEEDED
+Accept: application/json
+Content-Type: application/json
+
+{
+  "hostname": "harv-test-1",
+  "ipv4": "192.168.5.40",
+  "ipv6": "",
+  "mac": ""
+}

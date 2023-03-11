@@ -1,10 +1,10 @@
-FROM golang:1.18.3 as builder
+FROM golang:1.18.7 as builder
 COPY . /src
 WORKDIR /src
 
 RUN CGO_ENABLED=0 go build -o /app .
 
-FROM registry.suse.com/bci/bci-base:15.3
+FROM registry.suse.com/bci/bci-base:15.4
 RUN zypper -n rm container-suseconnect && \
     zypper -n install curl && \
     zypper -n clean -a && rm -rf /tmp/* /var/tmp/* /usr/share/doc/packages/*

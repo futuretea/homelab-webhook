@@ -13,6 +13,7 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.POST(uptimeKumaServerChanPath, uptimeKumaServerChanHandler)
+	r.POST(harvesterServerChanPath, harvesterServerChanHandler)
 	if err := r.Run(); err != nil {
 		panic(err)
 	}

@@ -25,7 +25,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ secrets.REGISTRY_URL }}/futuretea/uptime-kuma-serverchan
+          images: ${{ secrets.REGISTRY_URL }}/futuretea/homelab-webhook
           tags: type=ref,event=tag
 
       - name: Build and push
@@ -41,7 +41,7 @@ jobs:
         id: info
         run: |
           version=$(echo $GITHUB_REF | cut -d / -f 3)
-          echo "${{ secrets.REGISTRY_URL }}/futuretea/uptime-kuma-serverchan:${version}" > release.txt
+          echo "${{ secrets.REGISTRY_URL }}/futuretea/homelab-webhook:${version}" > release.txt
 
       - name: Release
         uses: softprops/action-gh-release@v1
